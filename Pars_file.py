@@ -4,12 +4,10 @@ import ipaddress
 pattern = r'\s(\w+)="([^"]*)"'
 filename_input = '443.txt'
 filename_output = 'output.txt'
+#You can enter subnets that should be excluded from the list.
 subnets = [
-    '10.128.0.0/10',
-    '10.188.224.0/20',
-    '10.66.160.0/19',
-    '10.255.16.128/26',
-    '10.255.0.240/29'
+    '255.255.255.254/31',
+    '0.0.0.0/31'
 ]
 subnet_objects = [ipaddress.ip_network(subnet) for subnet in subnets]
 
@@ -30,3 +28,4 @@ if __name__ == "__main__":
     for ip in sorted_filtered_ip_addresses:
         file.write(ip + '\n')
     file.close()
+
